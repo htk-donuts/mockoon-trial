@@ -1,0 +1,290 @@
+{
+  "uuid": "74560196-0389-4bd2-8c5d-5205ff68115c",
+  "lastMigration": 33,
+  "name": "User API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "d3bb5155-8031-4eb5-96cd-0a61a68314cb",
+      "type": "http",
+      "documentation": "Get all users",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "daac66f2-bd4a-46bb-9656-7a62ad9e9d35",
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"age\": 30\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response with list of users",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "dfca47c5-b39f-491f-bc84-9e1a9fc805d2",
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"age\": 30\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\",\n    \"age\": 28\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "multipleUsers",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "f159cf5c-85f3-46a0-9547-ec60c03e3596",
+          "body": "[]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "emptyList",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    },
+    {
+      "uuid": "eb811180-64c9-44ce-ae18-9ad7ebfe4ee8",
+      "type": "http",
+      "documentation": "Get user by ID",
+      "method": "get",
+      "endpoint": "users/:userId",
+      "responses": [
+        {
+          "uuid": "acf18ca1-dbe2-4621-bc31-ccb7208b5685",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"age\": 30\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response with user details id 1",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "FILE",
+          "filePath": "../responses/user1.json",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "userId",
+              "value": "1",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "15b411fa-b831-43b5-9715-a2e6f6893439",
+          "body": "{\n  \"id\": 2,\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"age\": 28\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Successful response with user details id 2",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "userId",
+              "value": "2",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "7bc7a6a9-b532-4216-bace-61653dd5930b",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"age\": 30\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "validUser",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "c5561be9-383c-40d9-90aa-72990b31a825",
+          "body": "{\n  \"code\": \"\",\n  \"message\": \"\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User not found",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "2977f5c2-d274-49d7-8e3e-20d8f5a6d6fe",
+          "body": "{\n  \"code\": \"USER_NOT_FOUND\",\n  \"message\": \"User with ID 999 not found\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "userNotFound",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "d3bb5155-8031-4eb5-96cd-0a61a68314cb"
+    },
+    {
+      "type": "route",
+      "uuid": "eb811180-64c9-44ce-ae18-9ad7ebfe4ee8"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "acd656d2-3819-47a7-a3f4-6e9b923acb7b",
+      "id": "ypzp",
+      "name": "user1",
+      "documentation": "",
+      "value": "[\n  {}\n]"
+    }
+  ],
+  "callbacks": []
+}

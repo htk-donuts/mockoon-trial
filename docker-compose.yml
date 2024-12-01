@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  mockoon:
+    image: mockoon/cli:latest
+    volumes:
+      - ./responses:/responses
+      - ./data:/data
+    ports:
+      - "3000:3000"
+    entrypoint: /bin/sh
+    command: >
+      -c "mockoon-cli start --data /data/environments.json --port 3000"
